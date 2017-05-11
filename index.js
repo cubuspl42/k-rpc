@@ -209,7 +209,8 @@ RPC.prototype._closest = function (target, message, background, visit, cb) {
     if (background && self.socket.inflight >= self.backgroundConcurrency && otherInflight) return
 
     var closest = table.closest(target, self.k)
-    if (!closest.length || closest.length < self.bootstrap.length) {
+    // if (!closest.length || closest.length < self.bootstrap.length) {
+    if (!closest.length) {
       closest = self.nodes.closest(target, self.k)
       if (!closest.length || closest.length < self.bootstrap.length) bootstrap()
     }
